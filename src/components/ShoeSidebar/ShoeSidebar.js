@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { QUERIES } from "../../constants";
 
 const Sidebar = () => {
   return (
@@ -21,7 +22,11 @@ const Sidebar = () => {
   );
 };
 
-const Wrapper = styled.aside``;
+const Wrapper = styled.aside`
+  @media ${QUERIES.tabletAndDown} {
+    display: none;
+  }
+`;
 
 const Link = styled.a`
   display: block;

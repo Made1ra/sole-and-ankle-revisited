@@ -6,8 +6,11 @@ import Select from "../Select";
 import Spacer from "../Spacer";
 import ShoeSidebar from "../ShoeSidebar";
 import ShoeGrid from "../ShoeGrid";
+import { QUERIES } from "../../constants";
 
 const ShoeIndex = ({ sortId, setSortId }) => {
+  const isSmall = window.matchMedia(QUERIES.tabletAndDown).matches;
+
   return (
     <Wrapper>
       <MainColumn>
@@ -31,7 +34,7 @@ const ShoeIndex = ({ sortId, setSortId }) => {
           <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
           <Breadcrumbs.Crumb href="/sale/shoes">Shoes</Breadcrumbs.Crumb>
         </Breadcrumbs>
-        <Spacer size={42} />
+        {!isSmall && <Spacer size={42} />}
         <ShoeSidebar />
       </LeftColumn>
     </Wrapper>
@@ -43,10 +46,19 @@ const Wrapper = styled.div`
   flex-direction: row-reverse;
   align-items: baseline;
   gap: 32px;
+
+  @media ${QUERIES.tabletAndDown} {
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
 `;
 
 const LeftColumn = styled.div`
   flex-basis: 248px;
+
+  @media ${QUERIES.tabletAndDown} {
+    flex: 1;
+  }
 `;
 
 const MainColumn = styled.div`
