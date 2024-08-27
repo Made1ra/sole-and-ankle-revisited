@@ -14,8 +14,6 @@ const Header = () => {
   // with an onClick handler, something like this:
   //
   // <button onClick={() => setShowMobileMenu(true)}>
-  const isSmall = window.matchMedia(QUERIES.tabletAndDown).matches;
-
   return (
     <header>
       <SuperHeader />
@@ -23,29 +21,24 @@ const Header = () => {
         <Side>
           <Logo />
         </Side>
-        {isSmall ? (
-          <Icons>
-            <Icon id="shopping-bag" strokeWidth={2} />
-            <Icon id="search" strokeWidth={2} />
-            <Icon
-              id="menu"
-              strokeWidth={2}
-              onClick={() => setShowMobileMenu(true)}
-            />
-          </Icons>
-        ) : (
-          <>
-            <Nav>
-              <NavLink href="/sale">Sale</NavLink>
-              <NavLink href="/new">New&nbsp;Releases</NavLink>
-              <NavLink href="/men">Men</NavLink>
-              <NavLink href="/women">Women</NavLink>
-              <NavLink href="/kids">Kids</NavLink>
-              <NavLink href="/collections">Collections</NavLink>
-            </Nav>
-            <Side />
-          </>
-        )}
+        <Icons>
+          <Icon id="shopping-bag" strokeWidth={2} />
+          <Icon id="search" strokeWidth={2} />
+          <Icon
+            id="menu"
+            strokeWidth={2}
+            onClick={() => setShowMobileMenu(true)}
+          />
+        </Icons>
+        <Nav>
+          <NavLink href="/sale">Sale</NavLink>
+          <NavLink href="/new">New&nbsp;Releases</NavLink>
+          <NavLink href="/men">Men</NavLink>
+          <NavLink href="/women">Women</NavLink>
+          <NavLink href="/kids">Kids</NavLink>
+          <NavLink href="/collections">Collections</NavLink>
+        </Nav>
+        <NavSide />
       </MainHeader>
 
       <MobileMenu
@@ -62,6 +55,7 @@ const MainHeader = styled.div`
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid var(--color-gray-300);
+  overflow: auto;
 
   @media ${QUERIES.mobile} {
     padding-inline: 16px;
@@ -70,8 +64,13 @@ const MainHeader = styled.div`
 
 const Nav = styled.nav`
   display: flex;
-  gap: 48px;
-  margin: 0px 48px;
+  gap: clamp(1rem, 14vw - 1.5rem, 3rem);
+  margin: 0 3rem;
+  margin-right: clamp(0.5rem, 14vw - 1.5rem, 3rem);
+
+  @media ${QUERIES.tabletAndDown} {
+    display: none;
+  }
 `;
 
 const Side = styled.div`
@@ -81,9 +80,21 @@ const Side = styled.div`
 const Icons = styled.div`
   height: 1.5rem;
   flex-shrink: 0;
-  display: flex;
+  display: none;
   align-self: center;
   gap: 2rem;
+
+  @media ${QUERIES.tabletAndDown} {
+    display: flex;
+  }
+`;
+
+const NavSide = styled.div`
+  flex: 1;
+
+  @media ${QUERIES.tabletAndDown} {
+    display: none;
+  }
 `;
 
 const NavLink = styled.a`
