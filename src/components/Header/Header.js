@@ -87,6 +87,10 @@ const Icons = styled.div`
   @media ${QUERIES.tabletAndDown} {
     display: flex;
   }
+
+  @media ${QUERIES.tabletAndDown} {
+    gap: 1rem;
+  }
 `;
 
 const NavSide = styled.div`
