@@ -40,7 +40,8 @@ const Background = styled.div`
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(96, 100, 108, 0.8);
+  background: var(--color-gray-700);
+  opacity: 0.8;
   z-index: 1;
 `;
 
