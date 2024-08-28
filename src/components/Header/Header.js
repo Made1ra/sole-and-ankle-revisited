@@ -53,7 +53,6 @@ const MainHeader = styled.div`
   display: flex;
   align-items: baseline;
   padding: 18px 32px;
-  height: 72px;
   border-bottom: 1px solid var(--color-gray-300);
   overflow: auto;
 
@@ -64,9 +63,8 @@ const MainHeader = styled.div`
 
 const Nav = styled.nav`
   display: flex;
-  gap: clamp(1rem, 14vw - 1.5rem, 3rem);
+  gap: clamp(1rem, 9vw - 4.5rem, 3rem);
   margin: 0 3rem;
-  margin-right: clamp(0.5rem, 14vw - 1.5rem, 3rem);
 
   @media ${QUERIES.tabletAndDown} {
     display: none;
